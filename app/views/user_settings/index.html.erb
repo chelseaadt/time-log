@@ -1,14 +1,33 @@
 <style>
 
+  body{
+    background-color: #EBEBEB;
+  }
+
   th{
     font-family: 'Oswald', sans-serif;
     font-size: 15px;
     font-weight: normal;
   }
 
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  padding-left: 5%;
+}
+
+.glyphicon-remove:before {
+  content: "\e014";
+  margin-left: %;
+  margin-left: 70%;
+}
+
 </style>
 
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+
 
 <p id="notice"><%= notice %></p>
 
@@ -29,6 +48,7 @@
       <th>Name</th>
       <th>Required Hours</th>
       <th>Setting</th>
+      <th><%= link_to 'New User Setting', new_user_setting_path, :class => 'btn' , :id => 'btn_updates' %> </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -41,8 +61,15 @@
         <td><%= user_setting.required_hours %></td>
         <td><%= user_setting.setting %></td>
 <!--         <td><%= link_to 'Show', user_setting %></td> -->
-        <td><%= link_to 'Edit', edit_user_setting_path(user_setting) , :class => 'btn', :id => 'btn_edit_usersettings' %></td>
-        <td><%= link_to 'Destroy', user_setting, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn', :id => 'btn_destroy_usersettings' %></td>
+        <td><%= link_to edit_user_setting_path(user_setting) , :class => '', :id => '' do %>
+          <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
+          <%= link_to user_setting, method: :delete, data: { confirm: 'Are you sure?' }, :class => '', :id => '' do%>
+        <i class="glyphicon glyphicon-remove"></i>
+        <% end %>
+        </td>
+        <td>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -50,6 +77,5 @@
 
 <br>
 
-<%= link_to 'New User Setting', new_user_setting_path, :class => 'btn' , :id => 'btn_updates' %> 
 </div>
 </div>

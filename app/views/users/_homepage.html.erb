@@ -1,87 +1,105 @@
 <style>
-th{
-  font-family: 'Oswald', sans-serif;
-  font-size: 15px;
-  font-weight: normal;
-}
 
-.info{
-  text-align: left;
-  margin-top: 2%;
-  margin-left: 18%;
-  font-family: Oswald;
-}
-
-.table{
-  width: 60%;
-  max-width: 60%;
-  margin-left: 20%;
-}
-
-h1{
-font-family: Oswald;
-margin-left: 20%;
-margin-bottom: 3%;
+  body{
+    background-color: #EBEBEB;
   }
-  
-}
 
-.user_info {
-  margin-top: 90px;
-  margin-right: auto;
-  width: 30%;
-}
+  th{
+    font-family: 'Oswald', sans-serif;  
+    font-size: 15px;
+    font-weight: normal;
+  }
 
-.time_entries {
-  margin-left: -22%;
-  width: 100%;
-  margin-top: auto;
-}
+  .info{
+    text-align: left;
+    margin-top: 2%;
+    margin-left: 18%;
+    font-family: Oswald;
+  }
+  .table{
+    width: 60%;
+    max-width: 60%;
+    margin-left: 20%;
+  }
 
-.edit_txt_field{
-  width: 200px;
-}
-
-form{
-  display: inline-block;
-  margin-top: 20px;
-}
-
-.panel-heading {
-  text-align: left;
-  background-color: #917E94!important;
-  border-color: #917E94 !important;
-  color:#fff !important;
-}
-
-.panel-default{
-  margin-top: 4%;
-}
+  h1{
+  font-family: Oswald;
+  margin-left: 20%;
+  margin-bottom: 3%;
+    }
     
-#user{
-  margin-top: 6%;
-  font-size: 18px;
-  margin-left: 1%;
-  margin-right: 5%;
-  margin-bottom: 14%;
-}
+  }
 
-.avatar{
--webkit-border-radius: 50%;
--moz-border-radius: 50%;
-background-color: #fff;
--webkit-box-shadow: 0 0 0 6px #fff, 0 0 0 8px #ddd, 0 0px 0px 0px rgba(0,0,0,.2);     
--moz-box-shadow: 0 0 0 6px #fff, 0 0 0 8px #ddd, 0 0px 0px 0px rgba(0,0,0,.2);     
-box-shadow: 0 0 0 6px #fff, 0 0 0 8px #ddd, 0 0px 0px 0px rgba(0,0,0,.2); 
-}
+  .user_info {
+    margin-top: 90px;
+    margin-right: auto;
+    width: 30%;
+  }
 
-.verticalLine {
+  .time_entries {
+    margin-left: -22%;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .edit_txt_field{
+    width: 200px;
+  }
+
+  form{
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .panel-heading {
+    text-align: left;
+    background-color: #917E94!important;
+    border-color: #917E94 !important;
+    color:#fff !important;
+  }
+
+  .panel-default{
+    margin-top: 10%;
+  }
+      
+  #user{
+    margin-top: 6%;
+    font-size: 18px;
+    margin-left: 1%;
+    margin-bottom: 14%;
+  }
+
+  .user_name{
+    text-align: center;
+    margin-right: 60px;
+    margin-top: 36px;
+    font-size: 25px;
+  }
+
+  .avatar {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999;
+    -moz-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999;
+  }
+
+  .verticalLine {
     border-left: thin solid #F2F0F3;
-}
+  }
 
-.col-md-6{
-  width: 38%;  
-}
+  .col-md-6 {
+    width: 37%;
+    margin-left: -9px;
+  }
+
+  .navbar-nav > li > a, .navbar-brand {
+      padding-top:4px !important; 
+      padding-bottom:0 !important;
+      height: 40px;
+  }
+  .navbar {min-height:28px !important;}
 
 </style>
 
@@ -94,30 +112,27 @@ box-shadow: 0 0 0 6px #fff, 0 0 0 8px #ddd, 0 0px 0px 0px rgba(0,0,0,.2);
   <div class="dashboard" id="dashboard">
     <!-- User Info -->
     <div id="main-container" class="user_info">
+    
       <center>
         <div class="panel panel-default"> 
           <div class="dashboard-header" id="dashboard-header">your profile</div>
 
         <div id="user" class="row">
-          <div class="col-md-6" id="my_avatar">
-            <%= image_tag("agarfieldftw.jpg", :alt => "rss feed", height: '100', width: '100', :class => 'avatar') %>
+          <div class="col-md-6">
+            <%= image_tag("agarfield.jpg", :alt => "rss feed", height: '100px', width: '100px', :class => 'avatar') %>
+          
+          <% @users.each do |user| %>
+              <div class="field form-group info user_name"> 
+                <%= user.first_name + " " + user.last_name %>
+              </div>
+              <% end %>
           </div>
 
           <% @users.each do |user| %>
-            <div class="col-md-6 verticalLine" id="my_info">
+            <div class="col-md-6 verticalLine">
               <div class="field form-group info"> 
                 <label>ID: </label>
                 <%= user.id %>
-              </div>
-
-              <div class="field form-group info"> 
-                <label>First Name: </label>
-                <%= user.first_name %>
-              </div>
-
-              <div class="field form-group info"> 
-                <label>Last Name: </label>
-                <%= user.last_name %>
               </div>
 
               <div class="field form-group info"> 

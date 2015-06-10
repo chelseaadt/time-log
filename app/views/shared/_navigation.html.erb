@@ -13,8 +13,14 @@
   body{
    background: #ebebeb;
   }
+  .LeName{
+
+    font-size: 25px;
+  }
+
 </style>
 
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
 
@@ -33,7 +39,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <% if user_signed_in?%>
     <div class="collapse navbar-collapse" id="signin_nav">  
-      <ul class="nav navbar-nav">
+
+<!--       <ul class="nav navbar-nav">
         <li class="active"><li><%= link_to 'Home',users_path, :class => 'navbar-link', :id => 'btn_animate' %></li><span class="sr-only">(current)</span></a></li>
                 
         <li class="dropdown">
@@ -50,15 +57,32 @@
             <% end %>
           </ul>
         </li>
-      </ul>
+      </ul> -->
 
       <ul class="nav navbar-nav navbar-right ">   
+       <li class="active"><li><%= link_to 'HOME',users_path, :class => 'navbar-link', :id => 'btn_animate' %></li><span class="sr-only">(current)</span></a></li>
+                
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ACTIONS<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <%@cu = CompanyUser.where(:user_id => current_user.id).first%>
+            <%if @cu.access_level == 1%>
+              <li><%= link_to 'Add New User', new_user_path %></li>
+              <li><%=link_to 'Manage User Settings', user_settings_path %></li>
+            <% end %>           
+            <% @user_settings = UserSetting.where(:user_id => current_user.id) %>
+            <% if @user_settings.present? %>
+              <li><%= link_to 'New Time entry', new_time_entry_path %></li> 
+            <% end %>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             <%= image_tag("man.png", :alt => "rss feed", height: '32', width: '32', :class => 'img-circle') %> 
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
+
             <li><a href="#">How are you today, <%= current_user.first_name %>?</a></li>
             <li class="divider"></li>
             <li><%= link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
@@ -71,7 +95,8 @@
           <% else %>
             <div class="collapse navbar-collapse" id="signout_nav">
               <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item">Kaishahero</li>               
+                       <li class="active"><li><%= link_to 'Kaishahero',users_path, :class => 'navbar-link', :id => 'btn_animate' %>
+                               
               </ul>
             </div><!-- /.navbar-collapse -->
           <% end %>

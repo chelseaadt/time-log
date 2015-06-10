@@ -1,18 +1,26 @@
+<style>
+  body{
+    background-color: #EBEBEB;
+  }
+
+   .time_entries_form{
+    padding-left: 40%;
+    font-family: Oswald;
+    font-size: 18px;
+  }
+</style>
+
+<link href='http://fonts  .googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+
 <br/><br/><br/><br/>
 
 
 <div class="container">
-
-
-	<div class="dashboard" id="dashboard">
-		<div class="dashboard-header" id="dashboard-header">
-		New Time Entry
-				</div>
-		<br/>
-	<%= render 'form' %>
-
-	<%= link_to 'Back', time_entries_path %>
-
-	</div>
-
+  <div class="dashboard" id="dashboard">
+    <div class="dashboard-header" id="dashboard-header">New Time Entry</div>
+    <br/>
+    <div class="time_entries_form">
+      <%= render 'form' %>
+    </div>
+  </div>
 </div>

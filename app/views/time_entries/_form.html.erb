@@ -1,8 +1,3 @@
-<%if current_user.present?%>
-<%= current_user.first_name %>
-<%= current_user.last_name %>
-<%end%>
- 
 <%= form_for(@time_entry) do |f| %>
   <% if @time_entry.errors.any? %>
     <div id="error_explanation">
@@ -15,27 +10,31 @@
       </ul>
     </div>
   <% end %>
+
 <form role="form">
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-">
   <div class="form-group">
-    <%= f.label :name %><br>
-    <%= f.select :name, options_for_select({ "Monday" => "Monday", "Tuesday" => "Tuesday", "Wednesday" => "Wendesday", "Thursday" => "Thursday", "Friday" => "Friday", "Saturday" => "Saturday"}, "Monday") %>
+    <label>Name: </label> <%= f.select(:name, options_for_select({ "Monday" => "Monday", "Tuesday" => "Tuesday", "Wednesday" => "Wendesday", "Thursday" => "Thursday", "Friday" => "Friday", "Saturday" => "Saturday"}, "Monday"), {}, {:class => "dropdown btn btn-default dropdown-toggle "}) %>
   </div>
- </div></div>
+ </div>
+</div>
   <div class="field">
-    <%= f.label :starts_at %><br>
-    <%= f.time_select :starts_at %>
+    <label>Time in: </label>
+    <%= f.time_select :starts_at, {}, {:class => 'dropdown btn btn-default dropdown-toggle'} %>
   </div>
   </p>
   
   <div class="field">
-    <%= f.label :finish_at %><br>
-    <%= f.time_select :finish_at %>
+    <label>Time out: </label>
+    <%= f.time_select :finish_at, {}, {:class => 'dropdown btn btn-default dropdown-toggle'}%>
   </div>
  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-success'%>
+  </div>
+  <div class="actions">
+    <%= link_to 'Cancel', users_path, class: "btn btn-danger" %>
   </div>
 <% end %>
 </form>
