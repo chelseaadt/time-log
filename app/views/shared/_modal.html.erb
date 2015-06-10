@@ -1,18 +1,18 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="modal_signin" tabindex="-1" role="dialog" aria-labelledby="modal_signin-label" aria-hidden="true">
+  <div class="modal fade" id="modal_signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="modal_signin-label">User Information</h4>
+          <h4 class="modal-title" id="myModalLabel">New Time Entry</h4>
         </div>
         <div class="modal-body">
-  			
-  			<%= render users/login %>
+        
+        <%= render 'time_entries/new' %>
 
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer">  
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
